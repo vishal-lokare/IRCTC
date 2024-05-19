@@ -28,27 +28,33 @@ Booking -
 ## API Endpoints
 
 ### Auth
-- POST /register
+- `POST /register` - To register a new user
     - Request {username, email, password}
     - Response {message}
-- POST /login 
+- `POST /login` - To login with username and password
     - Request {username, password}
     - Response {token}
 
 ### Trains
-- POST /admin/trains
+
+- `POST /admin/trains` - To add new trains from source to destination with available seats
     - Request {train_num, src, dest, avl_seats}, token, API_KEY
     - Response {message}
-- GET /trains
+
+- `PUT /admin/trains` - To update the number of available seats
+    - Request {train_num, avl_seats}, token, API_KEY
+    - Response {message}
+
+- `GET /trains` - To get all trains between source and destination
     - Request ?source="`source`"&destination="`destination`", token
     - Response {trains[]}
 
 ### Booking
-- POST /book
+- `POST /book` - To book a ticket on a train_num
     - Request {train_num}, token
     - Response {message}
 
-- GET /ticket
+- `GET /ticket` - To get the booking details of a booking_id
     - Request ?booking_id=`int`, token
     - Response {booking}
 
